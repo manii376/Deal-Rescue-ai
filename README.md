@@ -1,4 +1,4 @@
-# hack_with_hyderabad3.0
+# Deal Rescue AI
 AI-powered sales intelligence agent using Hindsight persistent memory to recall customer interactions, identify stalled deals, and learn from past outcomes. It features AI deal briefings, personalized follow-ups, similar-deal recall, evidence-based recommendations, and a Deal Time Machine to explore alternative sales strategies.
 
 > **Status: M4.5 (Hindsight Cloud verified).** CRUD, deterministic deal intelligence (M4) and the durable
