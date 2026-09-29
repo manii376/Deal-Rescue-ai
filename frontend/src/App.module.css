@@ -1,0 +1,190 @@
+/* Application shell: dark rail | warm workspace | inspector (deal pages only). docs/ui-ux-direction.md §5. */
+.app {
+  display: grid;
+  grid-template-columns: var(--pane-rail) minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.app[data-inspector='true'] {
+  grid-template-columns: var(--pane-rail) minmax(0, 1fr) var(--pane-inspector);
+}
+
+.rail {
+  min-width: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  min-height: 56px;
+  padding: 0 var(--gutter);
+  border-bottom: var(--rule-w) solid var(--c-rule);
+  background: color-mix(in srgb, var(--c-paper) 92%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+.menu,
+.miniBrand {
+  display: none;
+}
+
+.menu {
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin-left: calc(var(--s-2) * -1);
+  border: 0;
+  border-radius: var(--r-1);
+  background: transparent;
+  color: var(--c-ink);
+}
+
+.menu:hover {
+  background: var(--c-hover);
+}
+
+.miniBrand {
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--r-1);
+  background: var(--c-rail);
+  color: var(--c-on-brand);
+  font: 600 0.6875rem/1 var(--f-mono);
+  text-decoration: none;
+}
+
+.crumbs {
+  min-width: 0;
+}
+
+.crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font: var(--t-small);
+}
+
+.crumbs li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-width: 0;
+}
+
+.crumbs li + li::before {
+  content: '/';
+  color: var(--c-rule-strong);
+}
+
+.crumbs a {
+  color: var(--c-ink-3);
+  text-decoration: none;
+  border-radius: var(--r-1);
+}
+
+.crumbs a:hover {
+  color: var(--c-ink);
+  text-decoration: underline;
+}
+
+.crumbs [aria-current='page'] {
+  color: var(--c-ink);
+  font-weight: 500;
+}
+
+.principle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  margin-left: auto;
+  font: var(--t-small);
+  color: var(--c-ink-3);
+  white-space: nowrap;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: var(--s-6) var(--gutter) var(--s-8);
+  outline: none;
+}
+
+.inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.inspector {
+  min-width: 0;
+}
+
+.inspector > aside {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.scrim {
+  display: none;
+}
+
+@media (max-width: 1279px) {
+  .principle {
+    display: none;
+  }
+}
+
+/* Tablet: the inspector becomes an overlay drawer (see Inspector.module.css). */
+@media (max-width: 1023px) {
+  .app[data-inspector='true'] {
+    grid-template-columns: var(--pane-rail) minmax(0, 1fr);
+  }
+
+  .inspector {
+    position: absolute;
+  }
+}
+
+/* Phones: the rail is an off-canvas drawer opened from the top bar. */
+@media (max-width: 767px) {
+  .app,
+  .app[data-inspector='true'] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rail {
+    position: absolute;
+  }
+
+  .menu,
+  .miniBrand {
+    display: inline-grid;
+  }
+
+  .scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    background: var(--c-scrim);
+  }
+
+  .main {
+    padding-top: var(--s-5);
+  }
+}

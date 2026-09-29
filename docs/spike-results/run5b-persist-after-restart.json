@@ -1,0 +1,20 @@
+{
+  "command": "persist-verify",
+  "ran_at": "2026-09-28T13:15:44.237672+00:00",
+  "results": [
+    {
+      "id": "P2",
+      "name": "Memories unchanged after docker compose restart",
+      "status": "PASSED",
+      "detail": "all memory ids, texts and tags identical",
+      "data": null
+    },
+    {
+      "id": "P3",
+      "name": "Recall finds persisted memories after docker compose restart",
+      "status": "PASSED",
+      "detail": "2/2 persisted memory ids returned by recall",
+      "data": null
+    }
+  ]
+}

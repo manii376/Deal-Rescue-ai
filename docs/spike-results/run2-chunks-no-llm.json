@@ -1,0 +1,284 @@
+{
+  "run_id": "5abf493d",
+  "ran_at": "2026-09-28T12:59:47.022020+00:00",
+  "hindsight_base_url": "http://127.0.0.1:8888",
+  "bank_id": "deal-rescue-demo-spike-chunks",
+  "config": {
+    "anthropic_api_key": "missing",
+    "anthropic_model": "claude-opus-5",
+    "hindsight_base_url": "http://127.0.0.1:8888",
+    "hindsight_api_key": "not set",
+    "hindsight_bank_id": "deal-rescue-demo"
+  },
+  "extraction_mode": "chunks",
+  "summary": {
+    "PASSED": 10,
+    "FAILED": 1,
+    "SKIPPED": 0,
+    "UNVERIFIED": 1
+  },
+  "checks": [
+    {
+      "id": "C01",
+      "name": "Hindsight health and connectivity",
+      "status": "PASSED",
+      "detail": "reachable=True healthy=True version=0.10.1",
+      "needs_llm_credentials": false,
+      "data": {
+        "reachable": true,
+        "healthy": true,
+        "api_version": "0.10.1",
+        "health_payload": {
+          "status": "healthy",
+          "database": "connected",
+          "db_acquire_ms": 1.1,
+          "db_pool_waiting": 0,
+          "db_pool_in_use": 0,
+          "db_pool_max": 100,
+          "db_pool_idle": 5
+        },
+        "latency_s": 0.047
+      }
+    },
+    {
+      "id": "C02",
+      "name": "Create or reuse the memory bank",
+      "status": "PASSED",
+      "detail": "bank 'deal-rescue-demo-spike-chunks' created/updated (extraction mode: chunks)",
+      "needs_llm_credentials": false,
+      "data": {}
+    },
+    {
+      "id": "C03",
+      "name": "Retain synthetic interaction for customer A",
+      "status": "PASSED",
+      "detail": "success=True items=1 latency=0.24s",
+      "needs_llm_credentials": true,
+      "data": {
+        "success": true,
+        "items_count": 1,
+        "latency_seconds": 0.24426299997139722,
+        "operation_id": null,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "total_tokens": 0,
+          "cached_tokens": 0,
+          "thoughts_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "C04",
+      "name": "Retain synthetic interaction for customer B",
+      "status": "PASSED",
+      "detail": "success=True items=1 latency=0.25s",
+      "needs_llm_credentials": true,
+      "data": {
+        "success": true,
+        "items_count": 1,
+        "latency_seconds": 0.24902930005919188,
+        "operation_id": null,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "total_tokens": 0,
+          "cached_tokens": 0,
+          "thoughts_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "C05",
+      "name": "Recall expected memory with customer tag filter",
+      "status": "PASSED",
+      "detail": "1 results, all customer A, budget fact present",
+      "needs_llm_credentials": true,
+      "data": {
+        "count": 1,
+        "owners": [
+          "A"
+        ],
+        "sample": [
+          {
+            "id": "3218cbce-fcf7-4a68-8ea0-03aa482380d4",
+            "text": "[SYNTHETIC DEMO DATA, run 5abf493d] Discovery call with Aurora Logistics. CFO Priya Raman said the annual budget is capped at 42,000 USD and that a SOC 2 Type II report is mandatory before signing. They want a pilot in the Pune warehouse.",
+            "type": "world",
+            "document_id": "interaction:spike-a-5abf493d:1",
+            "tags": [
+              "kind:interaction",
+              "customer:spike-a-5abf493d",
+              "deal:spike-a-5abf493d-deal"
+            ],
+            "metadata": {
+              "source": "rep_note",
+              "synthetic": "true",
+              "customer_id": "spike-a-5abf493d",
+              "interaction_id": "interaction:spike-a-5abf493d:1"
+            },
+            "context": "sales call notes",
+            "occurred_start": null,
+            "occurred_end": null,
+            "mentioned_at": "2026-09-26T12:59:43.712486+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "id": "C06",
+      "name": "Customer-scoped recall never returns the other customer",
+      "status": "PASSED",
+      "detail": "0 cross-customer results in 4 scoped probes; unscoped control sees both",
+      "needs_llm_credentials": true,
+      "data": {
+        "probes": [
+          {
+            "probe": "A-scope asks about B",
+            "count": 1,
+            "owners": [
+              "A"
+            ],
+            "types": [
+              "world"
+            ]
+          },
+          {
+            "probe": "B-scope asks about A",
+            "count": 1,
+            "owners": [
+              "B"
+            ],
+            "types": [
+              "world"
+            ]
+          },
+          {
+            "probe": "A-scope own query",
+            "count": 1,
+            "owners": [
+              "A"
+            ],
+            "types": [
+              "world"
+            ]
+          },
+          {
+            "probe": "B-scope own query",
+            "count": 1,
+            "owners": [
+              "B"
+            ],
+            "types": [
+              "world"
+            ]
+          },
+          {
+            "probe": "unscoped control",
+            "count": 2,
+            "owners": [
+              "A",
+              "B"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "C07",
+      "name": "Reflect with include_facts returns evidence IDs",
+      "status": "FAILED",
+      "detail": "Hindsight reflect failed with HTTP 500: {\"detail\":\"Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CfVsvBQrBoSCYTeaNYPC5'}\"}",
+      "needs_llm_credentials": true,
+      "data": {}
+    },
+    {
+      "id": "C08a",
+      "name": "List memories by document and by tag",
+      "status": "PASSED",
+      "detail": "document filter ok=True, tag filter ok=True, observations=0",
+      "needs_llm_credentials": false,
+      "data": {
+        "by_document_count": 1,
+        "by_document_sample": [
+          {
+            "id": "3218cbce-fcf7-4a68-8ea0-03aa482380d4",
+            "text": "[SYNTHETIC DEMO DATA, run 5abf493d] Discovery call with Aurora Logistics. CFO Priya Raman said the annual budget is capped at 42,000 USD and that a SOC 2 Type II report is mandatory before signing. They want a pilot in the Pune warehouse.",
+            "type": "world",
+            "document_id": "interaction:spike-a-5abf493d:1",
+            "tags": [
+              "kind:interaction",
+              "customer:spike-a-5abf493d",
+              "deal:spike-a-5abf493d-deal"
+            ],
+            "metadata": {
+              "source": "rep_note",
+              "synthetic": "true",
+              "customer_id": "spike-a-5abf493d",
+              "interaction_id": "interaction:spike-a-5abf493d:1"
+            },
+            "context": "sales call notes",
+            "occurred_start": null,
+            "occurred_end": null,
+            "mentioned_at": "2026-09-26T12:59:43.712486+00:00"
+          }
+        ],
+        "by_tag_count": 1,
+        "by_tag_owners": [
+          "B"
+        ],
+        "observation_count": 0,
+        "observation_sample": []
+      }
+    },
+    {
+      "id": "C08b",
+      "name": "Observation history endpoint",
+      "status": "UNVERIFIED",
+      "detail": "no observations existed yet (consolidation is asynchronous); endpoint exists in the client but was not exercised",
+      "needs_llm_credentials": false,
+      "data": {}
+    },
+    {
+      "id": "C09",
+      "name": "Retain latency measurement",
+      "status": "PASSED",
+      "detail": "retain n=5 min=0.10s median=0.13s max=0.25s (chunks mode: NO LLM extraction, not representative of production)",
+      "needs_llm_credentials": true,
+      "data": {
+        "retain": [
+          0.24,
+          0.25,
+          0.13,
+          0.1,
+          0.12
+        ],
+        "recall": [
+          0.25,
+          0.25,
+          0.48,
+          0.19,
+          0.13,
+          0.3
+        ],
+        "reflect": []
+      }
+    },
+    {
+      "id": "C10a",
+      "name": "Invalid configuration is rejected before any call",
+      "status": "PASSED",
+      "detail": "bad URL and bad bank id raise ValidationError",
+      "needs_llm_credentials": false,
+      "data": {}
+    },
+    {
+      "id": "C10b",
+      "name": "Unavailable service yields a safe, typed error",
+      "status": "PASSED",
+      "detail": "health.reachable=False; error='Hindsight recall failed: cannot reach http://127.0.0.1:9 (ClientConnectorError)'; key leaked=False",
+      "needs_llm_credentials": false,
+      "data": {}
+    }
+  ],
+  "cleanup": "bank kept (pass --cleanup to delete)"
+}

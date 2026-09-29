@@ -1,0 +1,181 @@
+.small {
+  margin-top: var(--s-3);
+  font: var(--t-small);
+  color: var(--c-ink-3);
+}
+
+.none {
+  color: var(--c-ink-3);
+}
+
+.tableWrap {
+  container-type: inline-size;
+  border: var(--rule-w) solid var(--c-rule);
+  border-radius: var(--r-2);
+  background: var(--c-raised);
+  box-shadow: var(--shadow-1);
+  overflow-x: auto;
+}
+
+.ledger {
+  width: 100%;
+  border-collapse: collapse;
+  font: var(--t-small);
+}
+
+.ledger thead th {
+  padding: var(--s-2) var(--s-4);
+  border-bottom: var(--rule-w) solid var(--c-rule);
+  background: var(--c-paper);
+  font: var(--t-meta);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-ink-3);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.ledger td,
+.ledger tbody th {
+  padding: var(--s-3) var(--s-4);
+  border-bottom: var(--rule-w) solid var(--c-rule);
+  text-align: left;
+  vertical-align: top;
+  font-weight: 400;
+}
+
+.ledger tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.row {
+  transition: background-color var(--dur-fast) var(--ease);
+}
+
+.row:hover,
+.row:focus-within {
+  background: var(--c-hover);
+}
+
+.dealLink {
+  display: block;
+  color: var(--c-ink);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+
+.dealLink:hover {
+  text-decoration: underline;
+}
+
+.stage {
+  display: block;
+  margin-top: 2px;
+  color: var(--c-ink-3);
+  text-transform: capitalize;
+}
+
+.types {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-2);
+  color: var(--c-ink-2);
+}
+
+.count {
+  font: var(--t-data);
+  font-weight: 500;
+  color: var(--c-ink);
+}
+
+.data {
+  font: var(--t-data);
+  color: var(--c-ink-2);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.go {
+  width: 1%;
+  vertical-align: middle !important;
+}
+
+.open {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--r-1);
+  color: var(--c-ink-3);
+}
+
+.row:hover .open {
+  color: var(--c-ink);
+  background: var(--c-sunken);
+}
+
+.stack {
+  display: grid;
+  gap: var(--s-3);
+  margin: 0;
+  padding: 0;
+}
+
+.markLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2);
+  margin-bottom: var(--s-1);
+}
+
+.itemTitle {
+  font-weight: 500;
+}
+
+.explain {
+  margin-top: 2px;
+  max-width: var(--measure);
+  font: var(--t-small);
+  color: var(--c-ink-2);
+}
+
+/* The deal table stacks by the width of its own container. */
+@container (max-width: 760px) {
+  .ledger thead {
+    display: none;
+  }
+
+  .ledger tr {
+    display: grid;
+    gap: var(--s-2);
+    padding: var(--s-3) var(--s-4);
+    border-bottom: var(--rule-w) solid var(--c-rule);
+  }
+
+  .ledger tbody tr:last-child {
+    border-bottom: 0;
+  }
+
+  .ledger td,
+  .ledger tbody th {
+    display: block;
+    padding: 0;
+    border: 0;
+  }
+
+  .ledger td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font: var(--t-meta);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--c-ink-3);
+  }
+
+  .go {
+    display: none !important;
+  }
+}

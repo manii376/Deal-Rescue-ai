@@ -1,0 +1,36 @@
+{
+  "command": "persist-write",
+  "ran_at": "2026-09-28T13:15:14.107865+00:00",
+  "results": [
+    {
+      "id": "P1",
+      "name": "Write uniquely identified memories",
+      "status": "PASSED",
+      "detail": "bank deal-rescue-persist-228a2a81: 2 memories in 2 documents",
+      "data": {
+        "interaction:persist-228a2a81:1": [
+          {
+            "id": "ed88b4c1-2463-48b4-a179-e57d21f16e67",
+            "text": "[SYNTHETIC DEMO DATA, run 228a2a81] Persistence probe 1: customer persist-228a2a81 asked for quote revision 1.",
+            "tags": [
+              "customer:persist-228a2a81",
+              "deal:persist-228a2a81-deal",
+              "kind:interaction"
+            ]
+          }
+        ],
+        "interaction:persist-228a2a81:2": [
+          {
+            "id": "acfa8d7a-abdb-4a17-99ed-3e717f79de04",
+            "text": "[SYNTHETIC DEMO DATA, run 228a2a81] Persistence probe 2: customer persist-228a2a81 asked for quote revision 2.",
+            "tags": [
+              "customer:persist-228a2a81",
+              "deal:persist-228a2a81-deal",
+              "kind:interaction"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

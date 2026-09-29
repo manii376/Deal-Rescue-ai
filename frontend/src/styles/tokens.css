@@ -1,0 +1,178 @@
+/* Design tokens (docs/ui-ux-direction.md §4 and §8.2). The only place raw colour values live.
+ * Stage 1 visual redesign: ink #17252C, warm paper #F6F4EF, white surfaces, vermilion signal #C65D43, and a
+ * dark navigation rail whose accent is teal #167C78. Teal is used ONLY inside the rail: in the workspace,
+ * teal keeps its evidence meaning (customer statement, --c-statement).
+ * --c-repnote (M5): rep notes are the sales rep's account, never customer statements.
+ * Text colours were checked against WCAG 2.2 AA on paper, raised and sunken surfaces (signal ≥ 4.5:1). */
+
+:root {
+  /* neutrals (workspace) */
+  --c-paper: #f6f4ef;
+  --c-raised: #ffffff;
+  --c-sunken: #eeebe3;
+  --c-hover: #f1eee7;
+  --c-ink: #17252c;
+  --c-ink-2: #3e4b51;
+  --c-ink-3: #5c686d;
+  --c-rule: #e3ded3;
+  --c-rule-strong: #8c877c;
+  /* navigation rail (dark in both themes) */
+  --c-rail: #17252c;
+  --c-rail-2: #1f3139;
+  --c-rail-3: #2a3e47;
+  --c-rail-rule: #2c3f48;
+  --c-rail-ink: #eef3f4;
+  --c-rail-ink-2: #a9b8be;
+  --c-brand: #167c78;
+  --c-brand-ink: #5fc4bd;
+  --c-on-brand: #ffffff;
+  --c-scrim: rgb(11 18 21 / 0.45);
+  /* evidence */
+  --c-recorded: #1f3a5f;
+  --c-recorded-tint: #e6ecf3;
+  --c-statement: #1d5c50;
+  --c-statement-tint: #e3efeb;
+  --c-repnote: #5a4632;
+  --c-repnote-tint: #efe7dc;
+  --c-inference: #855300;
+  --c-inference-tint: #f5ebd6;
+  --c-hypothetical: #5a3d8a;
+  --c-hypothetical-tint: #ece6f4;
+  /* attention and system */
+  --c-signal: #b5503a;
+  --c-signal-rule: #c65d43;
+  --c-signal-tint: #f8e7e1;
+  --c-ok: #2e6a38;
+  --c-ok-tint: #e3efe4;
+  --c-focus: #1e5bb8;
+
+  /* type: self-hosted WOFF2 via @fontsource (imported in main.tsx); fallbacks from §4.3 */
+  --f-serif: 'Newsreader Variable', 'Newsreader', Georgia, 'Times New Roman', serif;
+  --f-sans: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+  --f-mono: 'IBM Plex Mono', ui-monospace, Consolas, monospace;
+  --t-display: 500 2.25rem/1.15 var(--f-serif);
+  --t-h1: 500 1.5rem/1.25 var(--f-serif);
+  --t-h2: 600 1.0625rem/1.35 var(--f-sans);
+  --t-body: 400 0.9375rem/1.55 var(--f-sans);
+  --t-prose: 400 1.0625rem/1.6 var(--f-serif);
+  --t-small: 400 0.8125rem/1.5 var(--f-sans);
+  --t-meta: 500 0.6875rem/1.4 var(--f-mono);
+  --t-data: 400 0.8125rem/1.45 var(--f-mono);
+
+  /* space, shape, elevation, motion */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --r-0: 0;
+  --r-1: 4px;
+  --r-2: 6px;
+  --r-pill: 999px;
+  --rule-w: 1px;
+  --mark-w: 3px;
+  --shadow-1: 0 1px 2px rgb(23 37 44 / 0.06);
+  --shadow-2: 0 1px 2px rgb(23 37 44 / 0.05), 0 4px 12px rgb(23 37 44 / 0.06);
+  --shadow-overlay: 0 12px 32px rgb(23 37 44 / 0.22);
+  --dur-fast: 120ms;
+  --dur-base: 180ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --pane-rail: 256px;
+  --pane-inspector: 380px;
+  --content-max: 1120px;
+  --measure: 72ch;
+  --gutter: 40px;
+  --control-h: 36px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --c-paper: #151e23;
+    --c-raised: #1a252b;
+    --c-sunken: #0d1417;
+    --c-hover: #1f2b31;
+    --c-ink: #e8edee;
+    --c-ink-2: #b8c3c6;
+    --c-ink-3: #909ca0;
+    --c-rule: #25343a;
+    --c-rule-strong: #56666c;
+    --c-rail: #0a0f12;
+    --c-rail-2: #152026;
+    --c-rail-3: #1d2c33;
+    --c-rail-rule: #243238;
+    --c-recorded: #93b6e2;
+    --c-recorded-tint: #1d2633;
+    --c-statement: #7fc8b6;
+    --c-statement-tint: #1a2a26;
+    --c-repnote: #d1b998;
+    --c-repnote-tint: #2a231b;
+    --c-inference: #e2b660;
+    --c-inference-tint: #2e2616;
+    --c-hypothetical: #bba5ec;
+    --c-hypothetical-tint: #262035;
+    --c-signal: #f0937a;
+    --c-signal-rule: #f0937a;
+    --c-signal-tint: #34201b;
+    --c-ok: #8bcb93;
+    --c-ok-tint: #1b2a1d;
+    --c-focus: #8ab4ff;
+    --shadow-1: 0 1px 2px rgb(0 0 0 / 0.3);
+    --shadow-2: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 12px rgb(0 0 0 / 0.3);
+    --shadow-overlay: 0 12px 32px rgb(0 0 0 / 0.55);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --c-paper: #151e23;
+  --c-raised: #1a252b;
+  --c-sunken: #0d1417;
+  --c-hover: #1f2b31;
+  --c-ink: #e8edee;
+  --c-ink-2: #b8c3c6;
+  --c-ink-3: #909ca0;
+  --c-rule: #25343a;
+  --c-rule-strong: #56666c;
+  --c-rail: #0a0f12;
+  --c-rail-2: #152026;
+  --c-rail-3: #1d2c33;
+  --c-rail-rule: #243238;
+  --c-recorded: #93b6e2;
+  --c-recorded-tint: #1d2633;
+  --c-statement: #7fc8b6;
+  --c-statement-tint: #1a2a26;
+  --c-repnote: #d1b998;
+  --c-repnote-tint: #2a231b;
+  --c-inference: #e2b660;
+  --c-inference-tint: #2e2616;
+  --c-hypothetical: #bba5ec;
+  --c-hypothetical-tint: #262035;
+  --c-signal: #f0937a;
+  --c-signal-rule: #f0937a;
+  --c-signal-tint: #34201b;
+  --c-ok: #8bcb93;
+  --c-ok-tint: #1b2a1d;
+  --c-focus: #8ab4ff;
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-2: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 12px rgb(0 0 0 / 0.3);
+  --shadow-overlay: 0 12px 32px rgb(0 0 0 / 0.55);
+  color-scheme: dark;
+}
+
+@media (max-width: 1279px) {
+  :root {
+    --gutter: 28px;
+    --pane-rail: 232px;
+    --pane-inspector: 340px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --gutter: 16px;
+  }
+}

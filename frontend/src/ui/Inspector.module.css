@@ -1,0 +1,188 @@
+.pane {
+  background: var(--c-raised);
+  border-left: var(--rule-w) solid var(--c-rule);
+  overflow-y: auto;
+}
+
+.empty {
+  margin: var(--s-6) var(--s-5);
+  padding: var(--s-5);
+  border: var(--rule-w) dashed var(--c-rule-strong);
+  border-radius: var(--r-2);
+  font: var(--t-small);
+  color: var(--c-ink-3);
+  text-align: center;
+}
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 56px;
+  padding: 0 var(--s-5);
+  border-bottom: var(--rule-w) solid var(--c-rule);
+  background: var(--c-raised);
+}
+
+.barLabel {
+  font: var(--t-meta);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-ink-3);
+}
+
+.close {
+  min-height: 30px;
+  padding: 0 var(--s-3);
+  border: var(--rule-w) solid var(--c-rule-strong);
+  border-radius: var(--r-1);
+  background: var(--c-raised);
+  font: var(--t-small);
+  font-weight: 500;
+  transition: background-color var(--dur-fast) var(--ease);
+}
+
+.close:hover {
+  background: var(--c-hover);
+}
+
+.content {
+  padding: var(--s-5);
+}
+
+.content:focus {
+  outline: none;
+}
+
+.content:focus-visible {
+  outline: 2px solid var(--c-focus);
+}
+
+.title {
+  font: var(--t-h2);
+  margin: var(--s-2) 0;
+}
+
+.sub {
+  font: var(--t-small);
+  color: var(--c-ink-3);
+}
+
+.text {
+  font: var(--t-prose);
+  margin-bottom: var(--s-3);
+}
+
+.excerpt {
+  font: var(--t-data);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: var(--c-paper);
+  border: var(--rule-w) solid var(--c-rule);
+  border-left: var(--mark-w) solid var(--c-rule-strong);
+  border-radius: var(--r-1);
+  padding: var(--s-3);
+  margin: var(--s-2) 0 var(--s-3);
+}
+
+.note {
+  font: var(--t-prose);
+  white-space: pre-wrap;
+}
+
+.fields {
+  margin: 0;
+}
+
+.field {
+  padding: var(--s-2) 0;
+  border-top: var(--rule-w) solid var(--c-rule);
+}
+
+.field dt {
+  font: var(--t-meta);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--c-ink-3);
+}
+
+.field dd {
+  margin: var(--s-1) 0 0;
+  font: var(--t-small);
+}
+
+.mono {
+  font: var(--t-data);
+  word-break: break-all;
+}
+
+.small {
+  font: var(--t-small);
+  color: var(--c-ink-3);
+}
+
+.missing {
+  font: var(--t-small);
+  font-style: italic;
+  color: var(--c-ink-3);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list li {
+  padding: 2px 0;
+}
+
+.factKey {
+  color: var(--c-ink-3);
+}
+
+.link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--c-recorded);
+  font: var(--t-data);
+  text-decoration: underline;
+  cursor: pointer;
+  word-break: break-all;
+  text-align: left;
+}
+
+.record {
+  margin-top: var(--s-4);
+  padding-top: var(--s-3);
+  border-top: var(--rule-w) solid var(--c-rule-strong);
+}
+
+.recordTitle {
+  font: var(--t-h2);
+  margin-bottom: var(--s-2);
+}
+
+.open {
+  outline: none;
+}
+
+/* Below 1024px the inspector is a drawer over the content, shown only when something is open. */
+@media (max-width: 1023px) {
+  .pane {
+    display: none;
+  }
+
+  .pane.open {
+    display: block;
+    position: fixed;
+    inset: 0 0 0 auto;
+    width: min(420px, 100%);
+    z-index: 35;
+    box-shadow: var(--shadow-overlay);
+  }
+}

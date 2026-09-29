@@ -1,0 +1,37 @@
+# Hindsight memory service for Deal Rescue AI.
+#
+# - Image pinned to 0.10.1 by tag AND digest (verified 2026-09-28); never `latest`.
+# - Ports are published on 127.0.0.1 only, so the unauthenticated API and UI are
+#   not reachable from other machines.
+# - Values come from the repo-root .env (see .env.example). Nothing secret lives here.
+services:
+  hindsight:
+    image: ghcr.io/vectorize-io/hindsight:0.10.1@sha256:b4d3b76f363aa40cf348450e7f8f52a50653008731b99824b14623a196182e73
+    container_name: deal-rescue-hindsight
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8888:8888" # Hindsight API
+      - "127.0.0.1:9999:9999" # Hindsight control-plane UI
+    environment:
+      HINDSIGHT_API_LLM_PROVIDER: ${HINDSIGHT_LLM_PROVIDER:-anthropic}
+      HINDSIGHT_API_LLM_MODEL: ${HINDSIGHT_LLM_MODEL:-claude-haiku-4-5}
+      # Hindsight's internal LLM (fact extraction, reflect, consolidation) reuses
+      # the app's Anthropic key. Verified: 0.10.1 refuses to start (crash-loops)
+      # when this is empty.
+      HINDSIGHT_API_LLM_API_KEY: ${ANTHROPIC_API_KEY:-}
+      # true = skip the startup test call to the LLM (it only logs a warning anyway).
+      HINDSIGHT_API_SKIP_LLM_VERIFICATION: ${HINDSIGHT_SKIP_LLM_VERIFICATION:-false}
+      HINDSIGHT_API_LOG_LEVEL: ${HINDSIGHT_LOG_LEVEL:-info}
+    volumes:
+      - hindsight-data:/home/hindsight/.pg0
+      - hindsight-models:/home/hindsight/.cache
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8888/health', timeout=5)"]
+      interval: 10s
+      timeout: 6s
+      retries: 30
+      start_period: 30s
+
+volumes:
+  hindsight-data:
+  hindsight-models:

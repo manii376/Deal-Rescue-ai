@@ -1,0 +1,45 @@
+.empty {
+  display: flex;
+  gap: var(--s-3);
+  align-items: flex-start;
+  padding: var(--s-5);
+  border: var(--rule-w) dashed var(--c-rule-strong);
+  border-radius: var(--r-2);
+  background: var(--c-paper);
+}
+
+.compact {
+  padding: var(--s-3) var(--s-4);
+}
+
+.icon {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-1);
+  background: var(--c-sunken);
+  color: var(--c-ink-3);
+}
+
+.compact .icon {
+  width: 24px;
+  height: 24px;
+}
+
+.title {
+  font-weight: 500;
+  color: var(--c-ink);
+}
+
+.body {
+  margin-top: 2px;
+  font: var(--t-small);
+  color: var(--c-ink-3);
+  max-width: var(--measure);
+}
+
+.action {
+  margin-top: var(--s-3);
+}

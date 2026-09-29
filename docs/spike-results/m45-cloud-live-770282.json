@@ -1,0 +1,204 @@
+{
+  "run_id": "770282",
+  "ran_at": "2026-09-28T16:06:03.776285+00:00",
+  "endpoint": "https://api.hindsight.vectorize.io",
+  "checks": [
+    {
+      "id": "L1",
+      "name": "Authenticated status probe",
+      "status": "PASSED",
+      "detail": "available",
+      "data": null
+    },
+    {
+      "id": "L2",
+      "name": "Retain (LLM extraction server-side) stores and records refs",
+      "status": "PASSED",
+      "detail": "statuses=['stored', 'stored', 'stored'], refs=[3, 2, 2], errors=[]",
+      "data": null
+    },
+    {
+      "id": "L3",
+      "name": "Memory ids recorded with their bank",
+      "status": "PASSED",
+      "detail": "bank_a ok=True, bank_b ok=True",
+      "data": null
+    },
+    {
+      "id": "L4",
+      "name": "Recall returns this customer's evidence linked to source records",
+      "status": "PASSED",
+      "detail": "hits=8, linked=5, unlinked_types=['observation']",
+      "data": [
+        {
+          "type": "world",
+          "provenance": "linked",
+          "text": "Priya Raman requires a SOC 2 Type II report before signing the deal. | When: 2026-09-20 | Involving: Priya Raman (CFO of Aurora Logistics) | Mandatory complianc"
+        },
+        {
+          "type": "world",
+          "provenance": "linked",
+          "text": "CFO Priya Raman stated the annual budget for the project is capped at USD 42,000. | When: 2026-09-20 | Involving: Priya Raman (CFO of Aurora Logistics) | Budget"
+        },
+        {
+          "type": "observation",
+          "provenance": "unlinked",
+          "text": "CFO Priya Raman has set a budget cap of USD 42,000 for the Aurora Logistics Pune warehouse pilot project."
+        },
+        {
+          "type": "observation",
+          "provenance": "unlinked",
+          "text": "Priya Raman requires a SOC 2 Type II report as a mandatory condition for signing the Aurora Logistics Pune warehouse pilot deal."
+        },
+        {
+          "type": "world",
+          "provenance": "linked",
+          "text": "Aurora Logistics requested a revised quote for the Pune warehouse pilot project. | When: 2026-09-22 | Involving: Aurora Logistics"
+        },
+        {
+          "type": "world",
+          "provenance": "linked",
+          "text": "Aurora Logistics set a deadline of 2026-09-30 for the revised quote. | When: 2026-09-30 | Involving: Aurora Logistics"
+        }
+      ]
+    },
+    {
+      "id": "L5",
+      "name": "Customer B's recall never returns customer A's memories",
+      "status": "PASSED",
+      "detail": "hits=4, leaked=0, excluded_foreign_bank=0",
+      "data": null
+    },
+    {
+      "id": "L6",
+      "name": "Reflect answers with evidence mapped back to source records",
+      "status": "PASSED",
+      "detail": "evidence=8, linked=5, unresolved=0",
+      "data": {
+        "text_excerpt": "For the Aurora Logistics Pune warehouse pilot project, CFO Priya Raman has established the following requirements:\n\n*   **Budget Limit:** An annual budget cap of **USD 42,000**.\n*   **Compliance Requirement:** The provision of a **SOC 2 Type II** report is a mandatory condition for signing the deal.",
+        "evidence": [
+          {
+            "provenance": "linked",
+            "type": "world",
+            "source": {
+              "source_type": "interaction",
+              "source_id": "int_b6f15e0c77f9463db4826ae580acb752",
+              "occurred_at": "2026-09-20T10:00:00Z",
+              "deal_id": "deal_af77aa7474c14a4e9452607f3e673943",
+              "memory_is_current": true
+            }
+          },
+          {
+            "provenance": "linked",
+            "type": "world",
+            "source": {
+              "source_type": "interaction",
+              "source_id": "int_b6f15e0c77f9463db4826ae580acb752",
+              "occurred_at": "2026-09-20T10:00:00Z",
+              "deal_id": "deal_af77aa7474c14a4e9452607f3e673943",
+              "memory_is_current": true
+            }
+          },
+          {
+            "provenance": "linked",
+            "type": "world",
+            "source": {
+              "source_type": "interaction",
+              "source_id": "int_e1051203fd75446291e9cb0d911eb8d6",
+              "occurred_at": "2026-09-22T10:00:00Z",
+              "deal_id": "deal_af77aa7474c14a4e9452607f3e673943",
+              "memory_is_current": true
+            }
+          },
+          {
+            "provenance": "linked",
+            "type": "world",
+            "source": {
+              "source_type": "interaction",
+              "source_id": "int_e1051203fd75446291e9cb0d911eb8d6",
+              "occurred_at": "2026-09-22T10:00:00Z",
+              "deal_id": "deal_af77aa7474c14a4e9452607f3e673943",
+              "memory_is_current": true
+            }
+          },
+          {
+            "provenance": "linked",
+            "type": "world",
+            "source": {
+              "source_type": "interaction",
+              "source_id": "int_b6f15e0c77f9463db4826ae580acb752",
+              "occurred_at": "2026-09-20T10:00:00Z",
+              "deal_id": "deal_af77aa7474c14a4e9452607f3e673943",
+              "memory_is_current": true
+            }
+          },
+          {
+            "provenance": "unlinked",
+            "type": "observation",
+            "source": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "L7",
+      "name": "Editing an interaction replaces its Cloud document (no stale facts)",
+      "status": "PASSED",
+      "detail": "status=stored, memories=2",
+      "data": [
+        "Aurora Logistics requires a SOC 2 Type II report before signing the contract. | When: 2026-09-20 | Involving: Priya Raman (CFO of Aurora Logistics) | Mandatory ",
+        "Aurora Logistics has a budget cap of USD 35,000 for the Pune warehouse pilot. | When: 2026-09-20 | Involving: Priya Raman (CFO of Aurora Logistics) | Budget con"
+      ]
+    },
+    {
+      "id": "L8",
+      "name": "Deleting an interaction removes its Cloud memories",
+      "status": "PASSED",
+      "detail": "status=deleted, remaining=0",
+      "data": null
+    },
+    {
+      "id": "L9",
+      "name": "Shared outcomes bank: retain + tag-filtered recall",
+      "status": "PASSED",
+      "detail": "hits=1",
+      "data": null
+    },
+    {
+      "id": "L10",
+      "name": "Test banks deleted",
+      "status": "PASSED",
+      "detail": "3/3",
+      "data": null
+    }
+  ],
+  "latency_seconds": {
+    "status_probe": [
+      1.517
+    ],
+    "interaction_with_first_retain": [
+      8.892,
+      6.246
+    ],
+    "interaction_retain_existing_bank": [
+      14.288
+    ],
+    "recall": [
+      1.498,
+      1.516
+    ],
+    "reflect": [
+      11.188
+    ],
+    "retain_direct": [
+      3.38
+    ]
+  },
+  "usage": {
+    "retain_input_tokens": 11634,
+    "reflect_calls": 1,
+    "recall_calls": 3
+  },
+  "estimated_cost_usd_at_list_price": 0.1663,
+  "note": "Recall output tokens are not reported by the client; recall cost excluded (tiny)."
+}

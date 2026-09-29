@@ -1,0 +1,99 @@
+.notice {
+  display: flex;
+  gap: var(--s-3);
+  margin: var(--s-3) 0;
+  padding: var(--s-3) var(--s-4);
+  border: var(--rule-w) solid var(--c-rule);
+  border-left: var(--mark-w) solid var(--c-rule-strong);
+  border-radius: var(--r-1);
+  background: var(--c-raised);
+}
+
+.warning {
+  border-left-color: var(--c-inference);
+  background: color-mix(in srgb, var(--c-inference-tint) 55%, var(--c-raised));
+}
+
+.error {
+  border-left-color: var(--c-signal-rule);
+  background: color-mix(in srgb, var(--c-signal-tint) 55%, var(--c-raised));
+}
+
+.icon {
+  flex: none;
+  padding-top: 2px;
+  color: var(--c-ink-3);
+}
+
+.warning .icon {
+  color: var(--c-inference);
+}
+
+.error .icon {
+  color: var(--c-signal);
+}
+
+.content {
+  min-width: 0;
+}
+
+.title {
+  font-weight: 500;
+}
+
+.tag {
+  font: var(--t-meta);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-right: var(--s-2);
+  color: var(--c-ink-3);
+}
+
+.error .tag {
+  color: var(--c-signal);
+}
+
+.warning .tag {
+  color: var(--c-inference);
+}
+
+.body {
+  margin-top: 2px;
+  font: var(--t-small);
+  color: var(--c-ink-2);
+  overflow-wrap: anywhere;
+}
+
+.action {
+  margin-top: var(--s-3);
+}
+
+.loading {
+  padding: var(--s-3) 0;
+  color: var(--c-ink-3);
+  font: var(--t-small);
+}
+
+.line {
+  display: block;
+  height: 10px;
+  margin-bottom: var(--s-2);
+  border-radius: var(--r-1);
+  background: var(--c-sunken);
+  animation: pulse 1.4s ease-in-out infinite;
+  width: 72%;
+}
+
+.line:nth-child(2) {
+  width: 54%;
+}
+
+.line:nth-child(3) {
+  width: 38%;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.45;
+  }
+}

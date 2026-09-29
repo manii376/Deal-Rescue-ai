@@ -1,0 +1,73 @@
+.field {
+  display: block;
+  min-width: 0;
+}
+
+.label {
+  display: block;
+  margin-bottom: var(--s-1);
+  font: var(--t-small);
+  font-weight: 500;
+}
+
+.control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  position: absolute;
+  left: 10px;
+  pointer-events: none;
+  color: var(--c-ink-3);
+}
+
+.input {
+  width: 100%;
+  min-height: var(--control-h);
+  padding: 0 var(--s-3) 0 32px;
+  border: var(--rule-w) solid var(--c-rule-strong);
+  border-radius: var(--r-1);
+  background: var(--c-raised);
+  font: var(--t-small);
+  transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+}
+
+.input::placeholder {
+  color: var(--c-ink-3);
+}
+
+.input:hover {
+  border-color: var(--c-ink-3);
+}
+
+.input:focus-visible {
+  outline: none;
+  border-color: var(--c-focus);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--c-focus) 25%, transparent);
+}
+
+/* Dark rail variant */
+.rail .icon {
+  color: var(--c-rail-ink-2);
+}
+
+.rail .input {
+  border-color: var(--c-rail-3);
+  background: var(--c-rail-2);
+  color: var(--c-rail-ink);
+}
+
+.rail .input::placeholder {
+  color: var(--c-rail-ink-2);
+}
+
+.rail .input:hover {
+  border-color: var(--c-rail-ink-2);
+}
+
+.rail .input:focus-visible {
+  border-color: var(--c-brand-ink);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--c-brand-ink) 30%, transparent);
+}

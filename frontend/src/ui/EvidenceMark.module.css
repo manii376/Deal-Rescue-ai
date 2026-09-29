@@ -1,0 +1,54 @@
+.mark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  font: var(--t-meta);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.glyph {
+  font-size: 0.8rem;
+}
+
+.detail {
+  color: var(--c-ink-3);
+}
+
+.recorded { color: var(--c-recorded); }
+.repnote { color: var(--c-repnote); }
+.statement { color: var(--c-statement); }
+.inference { color: var(--c-inference); }
+.hypothetical { color: var(--c-hypothetical); }
+.unsupported { color: var(--c-signal); }
+.missing { color: var(--c-ink-3); }
+.quality { color: var(--c-ink-2); }
+
+/* Blocks: 3px left rule; the rule's style (solid/dashed/dotted) also encodes the kind. */
+.block {
+  border: var(--rule-w) solid var(--c-rule);
+  border-left: var(--mark-w) solid var(--c-rule-strong);
+  border-radius: var(--r-1);
+  background: var(--c-raised);
+  padding: var(--s-3) var(--s-4);
+  list-style: none;
+}
+
+.block_recorded { border-left-color: var(--c-recorded); }
+.block_repnote { border-left-color: var(--c-repnote); }
+.block_statement { border-left-color: var(--c-statement); }
+.block_inference { border-left: var(--mark-w) dashed var(--c-inference); }
+
+.block_hypothetical {
+  border-left-color: var(--c-hypothetical);
+  background: repeating-linear-gradient(135deg, var(--c-hypothetical-tint) 0 6px, transparent 6px 12px);
+}
+
+.block_unsupported {
+  border-left: var(--mark-w) dotted var(--c-signal-rule);
+  color: var(--c-ink-2);
+}
+
+.block_missing { border-left: var(--mark-w) dotted var(--c-ink-3); }
+.block_quality { border-left: var(--mark-w) dotted var(--c-ink-2); }

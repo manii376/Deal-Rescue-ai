@@ -1,0 +1,70 @@
+{
+  "command": "bank-layout",
+  "ran_at": "2026-09-28T13:14:59.611864+00:00",
+  "results": [
+    {
+      "id": "L1",
+      "name": "Memory id maps back to source record via get_memory (shared bank)",
+      "status": "PASSED",
+      "detail": "get_memory(993b79a0-ce01-4f5d-a2d2-74aed1a0442c) -> document_id=interaction:layout-a-53af6983:1, metadata.source_record=interaction:layout-a-53af6983:1",
+      "data": {
+        "recall_result_id": "993b79a0-ce01-4f5d-a2d2-74aed1a0442c",
+        "get_memory": {
+          "id": "993b79a0-ce01-4f5d-a2d2-74aed1a0442c",
+          "text": "[SYNTHETIC DEMO DATA, run 53af6983] Aurora: budget capped at USD 42,000; SOC 2 required.",
+          "type": "world",
+          "document_id": "interaction:layout-a-53af6983:1",
+          "tags": [
+            "customer:layout-a-53af6983",
+            "deal:layout-a-53af6983-deal",
+            "kind:interaction"
+          ],
+          "metadata": {
+            "synthetic": "true",
+            "customer_id": "layout-a-53af6983",
+            "source_record": "interaction:layout-a-53af6983:1"
+          },
+          "context": "sales call notes",
+          "occurred_start": null,
+          "occurred_end": null,
+          "mentioned_at": "2026-09-28T13:14:57.998984+00:00"
+        }
+      }
+    },
+    {
+      "id": "L2",
+      "name": "Memory id maps back to source record (customer bank)",
+      "status": "PASSED",
+      "detail": "get_memory -> document_id=interaction:layout-a-53af6983:1",
+      "data": null
+    },
+    {
+      "id": "L3",
+      "name": "Memory ids are bank-scoped (lookup in another bank returns 404)",
+      "status": "PASSED",
+      "detail": "customer B bank returned nothing for customer A's memory id",
+      "data": null
+    },
+    {
+      "id": "L4",
+      "name": "Customer B bank cannot return customer A memories even unfiltered",
+      "status": "PASSED",
+      "detail": "unfiltered recall in B's bank for A's facts returned 0 A memories",
+      "data": null
+    },
+    {
+      "id": "L5",
+      "name": "Outcomes bank recall returns recorded outcome with its deal reference",
+      "status": "PASSED",
+      "detail": "1 result(s); first document_id=outcome:layout-a-53af6983-deal",
+      "data": null
+    },
+    {
+      "id": "L6",
+      "name": "Same content in two banks gets distinct memory ids",
+      "status": "PASSED",
+      "detail": "shared=993b79a0-ce01-4f5d-a2d2-74aed1a0442c customerA=e12cc7ae-2ec3-4436-bf2c-016f05c1e214",
+      "data": null
+    }
+  ]
+}

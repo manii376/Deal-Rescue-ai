@@ -1,0 +1,45 @@
+{
+  "run_id": "obs-b8a285",
+  "ran_at": "2026-09-28T16:08:49.384995+00:00",
+  "endpoint": "https://api.hindsight.vectorize.io",
+  "checks": [
+    {
+      "id": "O1",
+      "name": "Observation formed from the original fact",
+      "status": "PASSED",
+      "detail": "observations=1, mentioning 42,000=1",
+      "data": [
+        "Aurora's annual budget is capped at USD 42,000."
+      ]
+    },
+    {
+      "id": "O2",
+      "name": "After replace: no observation still states the old value",
+      "status": "PASSED",
+      "detail": "observations=1, still mentioning 42,000=0; document facts=1",
+      "data": {
+        "observations": [
+          "Aurora's annual budget is capped at USD 35,000."
+        ],
+        "document_facts": [
+          "Aurora's annual budget is capped at USD 35,000. | When: 2026-09-28 | Involving: Aurora (customer), CFO | Budget constraint for sales"
+        ]
+      }
+    },
+    {
+      "id": "O3",
+      "name": "After deleting the document: no observation about it remains",
+      "status": "PASSED",
+      "detail": "observations=0, still about Aurora=0",
+      "data": []
+    }
+  ],
+  "latency_seconds": {},
+  "usage": {
+    "retain_input_tokens": 4193,
+    "reflect_calls": 0,
+    "recall_calls": 0
+  },
+  "estimated_cost_usd_at_list_price": 0.0419,
+  "note": "Recall output tokens are not reported by the client; recall cost excluded (tiny)."
+}
